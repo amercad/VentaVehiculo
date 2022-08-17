@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/505/VentasVehiculo/app/src/main/res/layout/activity_factura.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/505/VentasVehiculo/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/505/VentasVehiculo/app/src/main/res/layout/activity_vehiculo.xml" value="0.23822463768115942" />
       </map>
     </option>
   </component>
