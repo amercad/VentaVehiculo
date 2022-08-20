@@ -80,6 +80,12 @@ public class VehiculoActivity extends AppCompatActivity {
             Cursor fila = db.rawQuery(
             "SELECT * FROM tbl_vehiculo WHERE placa = '" + placa + "'", null
             );
+
+            if (fila.moveToNext()) {
+
+            } else {
+                Toast.makeText(this, "Vehiculo no registrado", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
