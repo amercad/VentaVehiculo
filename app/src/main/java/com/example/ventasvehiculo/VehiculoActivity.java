@@ -18,6 +18,8 @@ public class VehiculoActivity extends AppCompatActivity {
     CheckBox cbActivo;
     ClsOpenHelper admin = new ClsOpenHelper(this, "ConcesionarioDB",null, 1);
     String placa, marca, modelo, valor;
+    int sw;
+    long resp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class VehiculoActivity extends AppCompatActivity {
         etModelo = findViewById(R.id.etModelo);
         etValor = findViewById(R.id.etValor);
         cbActivo = findViewById(R.id.cbActivo);
+        sw=0;
     }
 
     public void guardar(View view) {
@@ -39,7 +42,6 @@ public class VehiculoActivity extends AppCompatActivity {
         marca = etMarca.getText().toString();
         modelo = etModelo.getText().toString();
         valor = etValor.getText().toString();
-        Long resp;
         if( placa.isEmpty() || marca.isEmpty()
             || modelo.isEmpty() || valor.isEmpty()) {
 
@@ -54,7 +56,12 @@ public class VehiculoActivity extends AppCompatActivity {
             registro.put("modelo", modelo);
             registro.put("valor", Integer.parseInt(valor));
 
-            resp = db.insert("tbl_vehiculo", null, registro);
+            if (sw==0) {
+                resp = db.insert("tbl_vehiculo", null, registro);
+            } else {
+                resp = db.update("tbl_vehiculo", registro, "placa='" + placa + "'", null);
+                sw=0;
+            }
 
             if (resp > 0) {
                 Toast.makeText(this, "Registro guardado", Toast.LENGTH_SHORT).show();
@@ -69,6 +76,11 @@ public class VehiculoActivity extends AppCompatActivity {
 
     }
 
+    public void cancelar(View view) {
+        limpiarCampos();
+    }
+
+
     public void consultar(View view) {
 
         placa = etPlaca.getText().toString();
@@ -82,12 +94,41 @@ public class VehiculoActivity extends AppCompatActivity {
             );
 
             if (fila.moveToNext()) {
+                sw = 1;
+                etMarca.setText(fila.getString(1));
+                etModelo.setText(fila.getString(2));
+                etValor.setText(fila.getString(3));
+                if (fila.getString(4).equals("si")) {
+                    cbActivo.setChecked(true);
+                } else {
+                    cbActivo.setChecked(false);
+                }
 
             } else {
                 Toast.makeText(this, "Vehiculo no registrado", Toast.LENGTH_SHORT).show();
             }
         }
 
+    }
+
+    public void anular(View view) {
+        if(sw==0) {
+            Toast.makeText(this, "Debe consultar la placa", Toast.LENGTH_SHORT).show();
+            etPlaca.requestFocus();
+        } else {
+            SQLiteDatabase db = admin.getWritableDatabase();
+            ContentValues registro = new ContentValues();
+            registro.put("activo", "no");
+            long resp =  db.update("tbl_vehiculo", registro, "placa='" + placa +"'", null);
+            if (resp > 0) {
+                Toast.makeText(this, "Registro anulado", Toast.LENGTH_SHORT).show();
+                limpiarCampos();
+                sw=0;
+            } else {
+                Toast.makeText(this, "Error anulando registro", Toast.LENGTH_SHORT).show();
+            }
+            db.close();
+        }
     }
 
     private void limpiarCampos() {
@@ -97,6 +138,7 @@ public class VehiculoActivity extends AppCompatActivity {
         etValor.setText("");
         cbActivo.setChecked(false);
         etPlaca.requestFocus();
+        sw=0;
     }
 
     public void main(View view) {
