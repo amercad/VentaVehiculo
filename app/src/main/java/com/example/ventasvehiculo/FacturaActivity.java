@@ -45,6 +45,9 @@ public class FacturaActivity extends AppCompatActivity {
         etCodigoF.setText("");
         cbActivoF.setChecked(false);
         etPlaca.requestFocus();
+        tvValor.setText("");
+        tvModelo.setText("");
+        tvMarca.setText("");
         sw=0;
     }
 
@@ -69,13 +72,17 @@ public class FacturaActivity extends AppCompatActivity {
 
             SQLiteDatabase db = admin.getWritableDatabase();
             ContentValues registro = new ContentValues();
+            ContentValues registroVehiculo = new ContentValues();
 
 
             if (sw==1) {
                 registro.put("codigo_factura", codigo);
                 registro.put("fecha", fecha);
                 registro.put("placa", placa);
+
                 resp = db.insert("tbl_factura", null, registro);
+
+
             } else {
                 Toast.makeText(this, "No existe un vehiculo con esa placa", Toast.LENGTH_SHORT).show();
                 sw=0;
@@ -83,7 +90,8 @@ public class FacturaActivity extends AppCompatActivity {
 
             if (resp > 0) {
                 Toast.makeText(this, "Registro guardado", Toast.LENGTH_SHORT).show();
-
+                registroVehiculo.put("activo", "no");
+                db.update("tbl_vehiculo", registroVehiculo, "placa='" + placa + "'", null);
                 limpiarCampos();
             } else {
                 Toast.makeText(this, "No se pudo guardar la informacion", Toast.LENGTH_SHORT).show();
@@ -110,16 +118,17 @@ public class FacturaActivity extends AppCompatActivity {
 
             if (fila.moveToNext()) {
                 sw = 1;
-                tvValor.setText(fila.getString(3));
-                tvModelo.setText(fila.getString(2));
-                tvMarca.setText(fila.getString(1));
+                etPlaca.setText("");
+                tvValor.setText("Valor: " + fila.getString(3));
+                tvModelo.setText("Modelo: " + fila.getString(2));
+                tvMarca.setText("Marca: " + fila.getString(1));
                 if (fila.getString(4).equals("si")) {
                     cbActivoF.setChecked(true);
                 } else {
                     cbActivoF.setChecked(false);
                 }
-                limpiarCampos();
             } else {
+                limpiarCampos();
                 Toast.makeText(this, "Vehiculo no registrado", Toast.LENGTH_SHORT).show();
             }
         }
