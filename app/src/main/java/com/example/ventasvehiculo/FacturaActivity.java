@@ -63,7 +63,7 @@ public class FacturaActivity extends AppCompatActivity {
         codigo = etCodigoF.getText().toString();
         fecha = etFecha.getText().toString();
 
-        if( placa.isEmpty() || codigo.isEmpty()
+        if( codigo.isEmpty()
                 || fecha.isEmpty()) {
 
             Toast.makeText(this, "Todos los campos son requerido", Toast.LENGTH_SHORT).show();
@@ -118,7 +118,6 @@ public class FacturaActivity extends AppCompatActivity {
 
             if (fila.moveToNext()) {
                 sw = 1;
-                etPlaca.setText("");
                 tvValor.setText("Valor: " + fila.getString(3));
                 tvModelo.setText("Modelo: " + fila.getString(2));
                 tvMarca.setText("Marca: " + fila.getString(1));
@@ -128,8 +127,12 @@ public class FacturaActivity extends AppCompatActivity {
                     cbActivoF.setChecked(false);
                 }
             } else {
-                limpiarCampos();
+                etPlaca.setText("");
                 Toast.makeText(this, "Vehiculo no registrado", Toast.LENGTH_SHORT).show();
+                tvMarca.setText("");
+                tvModelo.setText("");
+                tvValor.setText("");
+                cbActivoF.setChecked(false);
             }
         }
     }
