@@ -125,6 +125,26 @@
                     app:cornerRadius="20dp" />
 
                 <Button
+                    android:id="@+id/btnConsultarF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#03A9F4"
+                    android:onClick="consultar"
+                    android:padding="10dp"
+                    android:text="CONSULTAR"
+                    app:cornerRadius="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <Button
                     android:id="@+id/btnAnularF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -136,15 +156,6 @@
                     android:text="Anular"
                     android:textSize="16sp"
                     app:cornerRadius="20dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnCancelarF"
@@ -159,19 +170,18 @@
                     android:textSize="16sp"
                     app:cornerRadius="20dp" />
 
-                <Button
-                    android:id="@+id/btnRegresarF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="#03A9F4"
-                    android:onClick="main"
-                    android:padding="10dp"
-                    android:text="Regresar"
-                    android:textSize="16sp"
-                    app:cornerRadius="20dp" />
-
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btnRegresarF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#03A9F4"
+                android:onClick="main"
+                android:padding="10dp"
+                android:text="Regresar"
+                android:textSize="16sp"
+                app:cornerRadius="20dp" />
 
         </LinearLayout>
     </ScrollView>

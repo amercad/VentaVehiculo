@@ -57,8 +57,6 @@ public class FacturaActivity extends AppCompatActivity {
     }
 
     public void guardar(View view) {
-
-
         placa = etPlaca.getText().toString();
         codigo = etCodigoF.getText().toString();
         fecha = etFecha.getText().toString();
@@ -69,19 +67,15 @@ public class FacturaActivity extends AppCompatActivity {
             Toast.makeText(this, "Todos los campos son requerido", Toast.LENGTH_SHORT).show();
             etPlaca.requestFocus();
         } else {
-
             SQLiteDatabase db = admin.getWritableDatabase();
             ContentValues registro = new ContentValues();
             ContentValues registroVehiculo = new ContentValues();
-
-
             if (sw==1) {
                 registro.put("codigo_factura", codigo);
                 registro.put("fecha", fecha);
                 registro.put("placa", placa);
 
                 resp = db.insert("tbl_factura", null, registro);
-
 
             } else {
                 Toast.makeText(this, "No existe un vehiculo con esa placa", Toast.LENGTH_SHORT).show();
@@ -99,6 +93,35 @@ public class FacturaActivity extends AppCompatActivity {
 
             db.close();
 
+        }
+
+    }
+
+    public void consultar(View view) {
+
+        codigo = etCodigoF.getText().toString();
+        if (codigo.isEmpty()) {
+            Toast.makeText(this, "El codigo de la factura es requerida", Toast.LENGTH_SHORT).show();
+            etPlaca.requestFocus();
+        } {
+            SQLiteDatabase db = admin.getReadableDatabase();
+            Cursor fila = db.rawQuery(
+                    "SELECT * FROM tbl_factura WHERE codigo_factura = '" + codigo + "'", null
+            );
+
+            if (fila.moveToNext()) {
+                etPlaca.setText(fila.getString(2));
+                etCodigoF.setText(fila.getString(0));
+                etFecha.setText(fila.getString(1));
+                if (fila.getString(3).equals("si")) {
+                    cbActivoF.setChecked(true);
+                } else {
+                    cbActivoF.setChecked(false);
+                }
+
+            } else {
+                Toast.makeText(this, "Factura no registrado", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
@@ -121,18 +144,13 @@ public class FacturaActivity extends AppCompatActivity {
                 tvValor.setText("Valor: " + fila.getString(3));
                 tvModelo.setText("Modelo: " + fila.getString(2));
                 tvMarca.setText("Marca: " + fila.getString(1));
-                if (fila.getString(4).equals("si")) {
-                    cbActivoF.setChecked(true);
-                } else {
-                    cbActivoF.setChecked(false);
-                }
+
             } else {
                 etPlaca.setText("");
                 Toast.makeText(this, "Vehiculo no registrado", Toast.LENGTH_SHORT).show();
                 tvMarca.setText("");
                 tvModelo.setText("");
                 tvValor.setText("");
-                cbActivoF.setChecked(false);
             }
         }
     }
