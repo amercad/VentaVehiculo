@@ -9,6 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#21232A"
         android:onClick="vehiculo">
 
         <LinearLayout
@@ -31,6 +32,7 @@
                 android:onClick="vehiculo"
                 android:text="Vehiculo"
                 android:textSize="30dp"
+                app:cornerRadius="20dp"
                 app:iconTint="#DF0E0E"
                 app:rippleColor="#B31F1F" />
 
@@ -44,6 +46,7 @@
                 android:onClick="factura"
                 android:text="Factura"
                 android:textSize="30dp"
+                app:cornerRadius="20dp"
                 app:rippleColor="#A11C1C" />
         </LinearLayout>
     </ScrollView>

@@ -39,13 +39,44 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/etPlacaFK"
+                android:id="@+id/etPlacaF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Placa"
                 android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/btnBuscarV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="buscarPlaca"
+                android:text="buscar placa" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvMarca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvModelo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvValor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
             <CheckBox
                 android:id="@+id/cbActivoF"
@@ -66,6 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="1"
+                    android:onClick="guardar"
                     android:text="Guardar" />
 
                 <Button
@@ -90,6 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="1"
+                    android:onClick="anular"
                     android:text="Anular" />
 
                 <Button
@@ -98,6 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
+                    android:onClick="btnCancelar"
                     android:text="Cancelar" />
             </LinearLayout>
 
@@ -105,6 +139,7 @@
                 android:id="@+id/btnRegresarF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="main"
                 android:text="Regresar" />
         </LinearLayout>
     </ScrollView>
