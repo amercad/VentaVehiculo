@@ -105,6 +105,7 @@
                     android:backgroundTint="#03A9F4"
                     android:onClick="guardar"
                     android:text="GUARDAR"
+                    android:textSize="16sp"
                     app:cornerRadius="20dp" />
 
                 <Button
@@ -116,6 +117,7 @@
                     android:backgroundTint="#03A9F4"
                     android:onClick="consultar"
                     android:text="Consultar"
+                    android:textSize="16sp"
                     app:cornerRadius="20dp" />
             </LinearLayout>
 
@@ -135,6 +137,7 @@
                     android:backgroundTint="#03A9F4"
                     android:onClick="anular"
                     android:text="Anular"
+                    android:textSize="16sp"
                     app:cornerRadius="20dp" />
 
                 <Button
@@ -146,6 +149,7 @@
                     android:backgroundTint="#03A9F4"
                     android:onClick="cancelar"
                     android:text="Cancelar"
+                    android:textSize="16sp"
                     app:cornerRadius="20dp" />
             </LinearLayout>
 
@@ -156,6 +160,7 @@
                 android:backgroundTint="#03A9F4"
                 android:onClick="main"
                 android:text="Regresar"
+                android:textSize="16sp"
                 app:cornerRadius="20dp" />
 
         </LinearLayout>
