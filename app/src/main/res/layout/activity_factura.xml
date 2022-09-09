@@ -26,10 +26,9 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:contentDescription="TODO"
                 android:paddingTop="100dp"
-                app:srcCompat="@drawable/factura"
-                android:contentDescription="TODO" />
+                app:srcCompat="@drawable/factura" />
 
             <EditText
                 android:id="@+id/etCodigo"
@@ -141,7 +140,7 @@
                     android:id="@+id/btnGuardarF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#03A9F4"
                     android:onClick="guardar"
@@ -154,6 +153,7 @@
                     android:id="@+id/btnConsultarF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#03A9F4"
                     android:onClick="consultar"
@@ -175,7 +175,7 @@
                     android:id="@+id/btnAnularF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#03A9F4"
                     android:onClick="anular"
@@ -188,7 +188,7 @@
                     android:id="@+id/btnCancelarF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#03A9F4"
                     android:onClick="cancelar"
