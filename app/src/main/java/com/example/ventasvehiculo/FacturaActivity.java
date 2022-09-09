@@ -45,7 +45,7 @@ public class FacturaActivity extends AppCompatActivity {
         etFecha.setText("");
         etCodigoF.setText("");
         cbActivoF.setChecked(false);
-        etPlaca.requestFocus();
+        cbActivoF.requestFocus();
         tvValor.setText("");
         tvModelo.setText("");
         tvMarca.setText("");
@@ -104,7 +104,7 @@ public class FacturaActivity extends AppCompatActivity {
         codigo = etCodigoF.getText().toString();
         if (codigo.isEmpty()) {
             Toast.makeText(this, "El codigo de la factura es requerida", Toast.LENGTH_SHORT).show();
-            etPlaca.requestFocus();
+            etCodigoF.requestFocus();
         } {
             SQLiteDatabase db = admin.getReadableDatabase();
             Cursor fila = db.rawQuery(
@@ -123,6 +123,7 @@ public class FacturaActivity extends AppCompatActivity {
                 }
 
             } else {
+                limpiarCampos();
                 Toast.makeText(this, "Factura no registrado", Toast.LENGTH_SHORT).show();
             }
         }
