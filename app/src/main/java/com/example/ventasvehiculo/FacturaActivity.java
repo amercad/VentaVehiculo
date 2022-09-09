@@ -22,6 +22,7 @@ public class FacturaActivity extends AppCompatActivity {
     String placa, codigo, fecha;
     int sw;
     long resp;
+    int  consCodigo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class FacturaActivity extends AppCompatActivity {
         tvModelo.setText("");
         tvMarca.setText("");
         sw=0;
+        consCodigo=0;
     }
 
     public void main(View view) {
@@ -106,10 +108,11 @@ public class FacturaActivity extends AppCompatActivity {
         } {
             SQLiteDatabase db = admin.getReadableDatabase();
             Cursor fila = db.rawQuery(
-                    "SELECT * FROM tbl_factura WHERE codigo_factura = '" + codigo + "'", null
+                    "SELECT * FROM tbl_factura WHERE codigo_factura = '" + codigo + "' AND activo = 'si'", null
             );
 
             if (fila.moveToNext()) {
+                consCodigo = 1;
                 etPlaca.setText(fila.getString(2));
                 etCodigoF.setText(fila.getString(0));
                 etFecha.setText(fila.getString(1));
@@ -146,7 +149,6 @@ public class FacturaActivity extends AppCompatActivity {
                 tvMarca.setText("Marca: " + fila.getString(1));
 
             } else {
-                etPlaca.setText("");
                 Toast.makeText(this, "Vehiculo no registrado", Toast.LENGTH_SHORT).show();
                 tvMarca.setText("");
                 tvModelo.setText("");
@@ -156,18 +158,18 @@ public class FacturaActivity extends AppCompatActivity {
     }
 
     public void anular(View view) {
-        if(sw==0) {
-            Toast.makeText(this, "Debe consultar la placa", Toast.LENGTH_SHORT).show();
-            etPlaca.requestFocus();
+        if(consCodigo==0) {
+            Toast.makeText(this, "Debe consultar el codigo", Toast.LENGTH_SHORT).show();
+            etCodigoF.requestFocus();
         } else {
             SQLiteDatabase db = admin.getWritableDatabase();
             ContentValues registro = new ContentValues();
             registro.put("activo", "no");
-            long resp =  db.update("tbl_vehiculo", registro, "placa='" + placa +"'", null);
+            long resp =  db.update("tbl_factura", registro, "codigo_factura='" + codigo +"'", null);
             if (resp > 0) {
                 Toast.makeText(this, "Registro anulado", Toast.LENGTH_SHORT).show();
                 limpiarCampos();
-                sw=0;
+                consCodigo=0;
             } else {
                 Toast.makeText(this, "Error anulando registro", Toast.LENGTH_SHORT).show();
             }

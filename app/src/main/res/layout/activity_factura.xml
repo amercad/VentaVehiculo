@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#21232A"
     tools:context=".FacturaActivity">
 
     <ScrollView
         android:layout_width="409dp"
         android:layout_height="729dp"
+        android:backgroundTint="#21232A"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
@@ -17,8 +19,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="20dp"
             android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:paddingTop="100dp"
+                app:srcCompat="@drawable/factura"
+                android:contentDescription="TODO" />
 
             <EditText
                 android:id="@+id/etCodigo"
@@ -28,7 +39,10 @@
                 android:layout_marginBottom="20dp"
                 android:ems="10"
                 android:hint="Codigo"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#7E7E7E" />
 
             <EditText
                 android:id="@+id/etFecha"
@@ -37,7 +51,10 @@
                 android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Fecha"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#7E7E7E" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,7 +70,10 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="Placa"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#7E7E7E" />
 
                 <Button
                     android:id="@+id/btnBuscarV"
@@ -66,8 +86,10 @@
                     android:onClick="buscarPlaca"
                     android:padding="10dp"
                     android:text="buscar placa"
+                    android:textColor="#E1E1E1"
                     android:textSize="16sp"
                     app:cornerRadius="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -82,6 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="#7E7E7E"
                     android:textSize="18sp" />
 
                 <TextView
@@ -89,6 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="#7E7E7E"
                     android:textSize="18sp" />
 
                 <TextView
@@ -96,6 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="#7E7E7E"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -104,7 +129,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="Activo" />
+                android:text="Activo"
+                android:textColor="#FFFFFF" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -133,6 +159,7 @@
                     android:onClick="consultar"
                     android:padding="10dp"
                     android:text="CONSULTAR"
+                    android:textColor="#FFFFFF"
                     app:cornerRadius="20dp" />
 
             </LinearLayout>
@@ -185,4 +212,5 @@
 
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
