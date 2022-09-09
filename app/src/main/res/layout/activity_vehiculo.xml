@@ -25,33 +25,43 @@
                 android:layout_height="205dp"
                 app:srcCompat="@drawable/vehiculo" />
 
-            <EditText
-                android:id="@+id/etPlaca"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="Placa"
-                android:inputType="textPersonName"
-                android:minHeight="48dp"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#7E7E7E" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/etMarca"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:ems="10"
-                android:hint="Marca"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:minHeight="48dp"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#7E7E7E" />
+                <EditText
+                    android:id="@+id/etPlaca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:hint="Placa"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#7E7E7E" />
+
+                <EditText
+                    android:id="@+id/etMarca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Marca"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#7E7E7E" />
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/etModelo"
@@ -77,45 +87,66 @@
                 android:textColor="#FFFFFF"
                 android:textColorHint="#7E7E7E" />
 
-            <CheckBox
-                android:id="@+id/cbActivo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:checked="false"
-                android:enabled="false"
-                android:text="Activo"
-                android:textColor="#FFFFFF" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cbActivo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:enabled="false"
+                    android:text="Activo"
+                    android:textColor="#FFFFFF" />
 
                 <Button
                     android:id="@+id/btnGuardar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#03A9F4"
                     android:onClick="guardar"
                     android:text="GUARDAR"
                     android:textSize="16sp"
-                    app:cornerRadius="20dp" />
+                    app:cornerRadius="5dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnConsultar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#03A9F4"
                     android:onClick="consultar"
                     android:text="Consultar"
+                    android:textSize="16sp"
+                    app:cornerRadius="20dp" />
+
+                <Button
+                    android:id="@+id/btnAnular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="2"
+                    android:backgroundTint="#03A9F4"
+                    android:onClick="anular"
+                    android:text="Anular"
                     android:textSize="16sp"
                     app:cornerRadius="20dp" />
             </LinearLayout>
@@ -128,40 +159,29 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnAnular"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btnCancelar"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#03A9F4"
-                    android:onClick="anular"
-                    android:text="Anular"
-                    android:textSize="16sp"
-                    app:cornerRadius="20dp" />
-
-                <Button
-                    android:id="@+id/btnCancelar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#03A9F4"
                     android:onClick="cancelar"
                     android:text="Cancelar"
                     android:textSize="16sp"
                     app:cornerRadius="20dp" />
-            </LinearLayout>
 
-            <Button
-                android:id="@+id/btnRegresar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:backgroundTint="#03A9F4"
-                android:onClick="main"
-                android:text="Regresar"
-                android:textSize="16sp"
-                app:cornerRadius="20dp" />
+                <Button
+                    android:id="@+id/btnRegresar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#03A9F4"
+                    android:onClick="main"
+                    android:text="Regresar"
+                    android:textSize="16sp"
+                    app:cornerRadius="20dp" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

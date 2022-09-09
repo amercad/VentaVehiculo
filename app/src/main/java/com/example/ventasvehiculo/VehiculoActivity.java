@@ -16,7 +16,7 @@ public class VehiculoActivity extends AppCompatActivity {
 
     EditText etPlaca, etMarca, etModelo, etValor;
     CheckBox cbActivo;
-    ClsOpenHelper admin = new ClsOpenHelper(this, "ConcesionarioDB",null, 1);
+    ClsOpenHelper admin = new ClsOpenHelper(this, "ConcesionarioDB",null, 1 );
     String placa, marca, modelo, valor;
     int sw;
     long resp;
