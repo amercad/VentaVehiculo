@@ -45,7 +45,7 @@ public class FacturaActivity extends AppCompatActivity {
         etFecha.setText("");
         etCodigoF.setText("");
         cbActivoF.setChecked(false);
-        cbActivoF.requestFocus();
+        etCodigoF.requestFocus();
         tvValor.setText("");
         tvModelo.setText("");
         tvMarca.setText("");
@@ -67,7 +67,7 @@ public class FacturaActivity extends AppCompatActivity {
                 || fecha.isEmpty()) {
 
             Toast.makeText(this, "Todos los campos son requerido", Toast.LENGTH_SHORT).show();
-            etPlaca.requestFocus();
+            etCodigoF.requestFocus();
         } else {
             SQLiteDatabase db = admin.getWritableDatabase();
             ContentValues registro = new ContentValues();
