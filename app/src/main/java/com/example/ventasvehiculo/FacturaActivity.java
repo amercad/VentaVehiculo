@@ -108,7 +108,7 @@ public class FacturaActivity extends AppCompatActivity {
         } {
             SQLiteDatabase db = admin.getReadableDatabase();
             Cursor fila = db.rawQuery(
-                    "SELECT * FROM tbl_factura WHERE codigo_factura = '" + codigo + "' AND activo = 'si'", null
+                    "SELECT * FROM tbl_factura WHERE codigo_factura = '" + codigo + "'", null
             );
 
             if (fila.moveToNext()) {
@@ -120,6 +120,7 @@ public class FacturaActivity extends AppCompatActivity {
                     cbActivoF.setChecked(true);
                 } else {
                     cbActivoF.setChecked(false);
+                    cbActivoF.setClickable(false);
                 }
 
             } else {
